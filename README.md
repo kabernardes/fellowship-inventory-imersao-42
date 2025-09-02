@@ -1,69 +1,40 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Fellowship Inventory
 
-Currently, two official plugins are available:
+No desenvolvimento moderno de aplicações front-end, é comum que projetos em React cresçam rapidamente, acumulando código complexo e difícil de manter. Componentização é uma prática essencial para organizar a interface em partes reutilizáveis e de responsabilidade única, facilitando manutenção, escalabilidade e legibilidade do código.
+Entretanto, iniciar uma refatoração em projetos existentes pode ser arriscado. Testes automatizados desempenham um papel crucial ao garantir que mudanças estruturais não quebrem funcionalidades existentes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Nesta palestra, será apresentado um projeto inicial em React e TypeScript, o **Inventário da Sociedade do Anel**, que está funcionando e testado, mas ainda não componentizado. Através de uma refatoração guiada pelos testes, será demonstrado como organizar o código em componentes sem comprometer o funcionamento da aplicação.
 
-## Expanding the ESLint configuration
+## Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Como rodar o projeto
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Instale as dependências:**
+  ```bash
+  npm install
+  ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. **Execute em modo desenvolvimento:**
+  ```bash
+  npm run dev
+  ```
+  O projeto estará disponível em `http://localhost:5173` (ou porta informada no terminal).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. **Build para produção:**
+  ```bash
+  npm run build
+  ```
+  Os arquivos finais estarão na pasta `dist/`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Sobre
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Este projeto faz parte do programa de formação da CodeMiner42, Imersão 42 e tem como objetivo praticar conceitos de frontend moderno, componentização e integração com ferramentas de desenvolvimento ágil.
+
+---
+
+Caso tenha dúvidas ou sugestões, fique à vontade para abrir uma issue ou contribuir!
