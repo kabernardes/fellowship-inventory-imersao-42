@@ -14,6 +14,7 @@ const App = () => {
   };
 
   const removeFromMission = (heroId: number) => {
+    setMessage('');
     setMissionTeam(missionTeam.filter((h) => h.id !== heroId));
   };
 
