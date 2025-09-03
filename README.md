@@ -6,11 +6,34 @@ Entretanto, iniciar uma refatoração em projetos existentes pode ser arriscado.
 
 Nesta palestra, será apresentado um projeto inicial em React e TypeScript, o **Inventário da Sociedade do Anel**, que está funcionando e testado, mas ainda não componentizado. Através de uma refatoração guiada pelos testes, será demonstrado como organizar o código em componentes sem comprometer o funcionamento da aplicação.
 
+
 ## Tecnologias Utilizadas
 
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
+
+## Tecnologias de Teste
+
+- [Vitest](https://vitest.dev/) — Test runner rápido e moderno, compatível com Jest.
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) — Testes de componentes React focados em comportamento do usuário.
+- [Jest DOM](https://github.com/testing-library/jest-dom) — Matchers adicionais para asserções em testes DOM.
+
+## Como rodar os testes
+
+1. **Executar todos os testes:**
+  ```bash
+  npm run test
+  # ou
+  npx vitest run
+  ```
+
+2. **Modo watch (reexecuta ao salvar):**
+  ```bash
+  npx vitest
+  ```
+
+Os testes estão localizados na pasta `src/` e utilizam a React Testing Library para garantir o funcionamento dos componentes.
 
 ## Como rodar o projeto
 
