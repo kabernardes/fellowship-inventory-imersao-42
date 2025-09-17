@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { fellowship, type Hero } from './data/fellowship.ts';
+import { fellowship } from './data/fellowship.ts';
 import './App.css';
+import type { Hero } from './interface.ts/hero.ts';
+import Navbar from './components/Navbar.tsx';
 
 const App = () => {
   const [missionTeam, setMissionTeam] = useState<Hero[]>([]);
@@ -37,9 +39,7 @@ const App = () => {
 
   return (
     <div>
-      <nav>
-        <h1>Fellowship Inventory</h1>
-      </nav>
+      <Navbar />
 
       <h2>All Heroes</h2>
       <input
@@ -69,10 +69,7 @@ const App = () => {
       {message && (
         <p
           style={{
-            color:
-              message.includes('mission begins')
-                ? 'green'
-                : 'red',
+            color: message.includes('mission begins') ? 'green' : 'red',
             fontWeight: 'bold',
             marginTop: '1rem',
           }}

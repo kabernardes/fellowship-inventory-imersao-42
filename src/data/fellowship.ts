@@ -1,9 +1,4 @@
-export interface Hero {
-  id: number;
-  name: string;
-  race: string;
-  ability: string;
-}
+import type { Hero } from "../interface.ts/hero";
 
 export const fellowship: Hero[] = [
   { id: 1, name: 'Frodo', race: 'Hobbit', ability: 'Ring Bearer' },
