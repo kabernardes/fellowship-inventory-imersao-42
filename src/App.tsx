@@ -4,6 +4,7 @@ import './App.css';
 import type { Hero } from './interface.ts/hero.ts';
 import Navbar from './components/Navbar.tsx';
 import SearchBar from './components/SearchBar.tsx';
+import HeroCard from './components/HeroCard.tsx';
 
 const App = () => {
   const [missionTeam, setMissionTeam] = useState<Hero[]>([]);
@@ -43,20 +44,20 @@ const App = () => {
       <Navbar />
 
       <h2>All Heroes</h2>
-      <SearchBar value={search} onChange={setSearch} placeholder='Search heroes...' />
+      <SearchBar
+        value={search}
+        onChange={setSearch}
+        placeholder="Search heroes..."
+      />
       <ul>
         {filteredHeroes.map((hero) => {
           const alreadyInMission = missionTeam.some((h) => h.id === hero.id);
           return (
-            <li key={hero.id}>
-              <strong>{hero.name}</strong> ({hero.race}) - {hero.ability}{' '}
-              <button
-                onClick={() => addToMission(hero)}
-                disabled={alreadyInMission}
-              >
-                {alreadyInMission ? 'Already in Mission' : 'Add to Mission'}
-              </button>
-            </li>
+            <HeroCard
+              hero={hero}
+              isInMission={alreadyInMission}
+              addToMission={addToMission}
+            />
           );
         })}
       </ul>
@@ -75,10 +76,10 @@ const App = () => {
       )}
       <ul>
         {missionTeam.map((hero) => (
-          <li key={hero.id}>
-            <strong>{hero.name}</strong> ({hero.race}) - {hero.ability}{' '}
-            <button onClick={() => removeFromMission(hero.id)}>Remove</button>
-          </li>
+          <HeroCard
+            hero={hero}
+            removeFromMission={removeFromMission}
+          />
         ))}
       </ul>
 
