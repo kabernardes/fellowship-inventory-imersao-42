@@ -1,10 +1,6 @@
 import { useState } from 'react';
-import { fellowship } from './data/fellowship.ts';
+import { fellowship, type Hero } from './data/fellowship.ts';
 import './App.css';
-import type { Hero } from './interface/hero.ts';
-import Navbar from './components/Navbar.tsx';
-import SearchBar from './components/SearchBar.tsx';
-import HeroCard from './components/HeroCard.tsx';
 
 const App = () => {
   const [missionTeam, setMissionTeam] = useState<Hero[]>([]);
@@ -41,23 +37,30 @@ const App = () => {
 
   return (
     <div>
-      <Navbar />
+      <nav>
+        <h1>Fellowship Inventory</h1>
+      </nav>
 
       <h2>All Heroes</h2>
-      <SearchBar
-        value={search}
-        onChange={setSearch}
+      <input
+        type="text"
         placeholder="Search heroes..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       />
       <ul>
         {filteredHeroes.map((hero) => {
           const alreadyInMission = missionTeam.some((h) => h.id === hero.id);
           return (
-            <HeroCard
-              hero={hero}
-              isInMission={alreadyInMission}
-              addToMission={addToMission}
-            />
+            <li key={hero.id}>
+              <strong>{hero.name}</strong> ({hero.race}) - {hero.ability}{' '}
+              <button
+                onClick={() => addToMission(hero)}
+                disabled={alreadyInMission}
+              >
+                {alreadyInMission ? 'Already in Mission' : 'Add to Mission'}
+              </button>
+            </li>
           );
         })}
       </ul>
@@ -66,7 +69,10 @@ const App = () => {
       {message && (
         <p
           style={{
-            color: message.includes('mission begins') ? 'green' : 'red',
+            color:
+              message.includes('mission begins')
+                ? 'green'
+                : 'red',
             fontWeight: 'bold',
             marginTop: '1rem',
           }}
@@ -76,7 +82,10 @@ const App = () => {
       )}
       <ul>
         {missionTeam.map((hero) => (
-          <HeroCard hero={hero} onRemove={removeFromMission} />
+          <li key={hero.id}>
+            <strong>{hero.name}</strong> ({hero.race}) - {hero.ability}{' '}
+            <button onClick={() => removeFromMission(hero.id)}>Remove</button>
+          </li>
         ))}
       </ul>
 
